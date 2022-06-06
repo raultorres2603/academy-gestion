@@ -18,8 +18,14 @@
 
 .buttonLogin {
   margin-top: 2vw;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .titleForm {
   margin-bottom: 1vw;
+}
+
+.buttonForm {
+  font-size: 2vw;
 }

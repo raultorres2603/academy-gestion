@@ -20,7 +20,7 @@ class RegLogForm extends React.Component {
                   <div className="row">
                     <div className="col-md-6">
                       <input
-                        className="form-control form-control-lg inputForm"
+                        className="form-control form-control-lg inputForm bg-dark text-white"
                         type="text"
                         placeholder="Username"
                         name="username"
@@ -29,7 +29,7 @@ class RegLogForm extends React.Component {
                     </div>
                     <div className="col-md-6">
                       <input
-                        className="form-control form-control-lg inputForm"
+                        className="form-control form-control-lg inputForm bg-dark text-white"
                         type="password"
                         placeholder="Password"
                         name="password"
@@ -39,12 +39,14 @@ class RegLogForm extends React.Component {
                   </div>
                   <div className="row buttonLogin">
                     <div className="col-md-12">
-                      <button
-                        type="button"
-                        class="btn btn-success btn-lg inputForm"
-                      >
-                        Large button
-                      </button>
+                      <div className="d-grid gap-2">
+                        <button
+                          type="button"
+                          class="btn btn-success btn-lg buttonForm"
+                        >
+                          Login
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </form>
