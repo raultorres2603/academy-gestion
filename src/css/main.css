@@ -1,6 +1,6 @@
 @font-face {
   font-family: "TizaFont";
-  src: url("./Kdam_Thmor_Pro/KdamThmorPro-Regular.ttf");
+  src: url("./Tiza.ttf");
 }
 
 .App {
@@ -12,12 +12,12 @@
 }
 
 .inputForm {
-  font-size: 2vw;
+  font-size: 1.3vw;
   width: fit-content;
 }
 
 .buttonLogin {
-  margin-top: 2vw;
+  margin-top: 1vw;
   margin-left: 3%;
   margin-right: 3%;
 }
@@ -27,5 +27,5 @@
 }
 
 .buttonForm {
-  font-size: 2vw;
+  font-size: 1.5vw;
 }
