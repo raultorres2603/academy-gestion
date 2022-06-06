@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "TizaFont";
+  src: url("./Kdam_Thmor_Pro/KdamThmorPro-Regular.ttf");
+}
+
+.App {
+  margin-top: 12%;
+}
+
+* {
+  font-family: TizaFont;
+}
+
+.inputForm {
+  font-size: 2vw;
+  width: fit-content;
+}
+
+.buttonLogin {
+  margin-top: 2vw;
+}
+
+.titleForm {
+  margin-bottom: 1vw;
+}
