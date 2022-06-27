@@ -22,11 +22,33 @@ class RegLogForm extends React.Component {
     e.preventDefault();
 
     axios
-      .get(`${config.secure}://${config.dominion}:${config.port}/api/login`, {
+      .post(`${config.secure}://${config.dominion}:${config.port}/api/login`, {
         username: this.state.username,
         password: this.state.password,
       })
-      .then((res) => {});
+      .then((res) => {
+        console.log(res);
+        if (res.data.error) {
+          switch (res.data.error) {
+            case "1":
+              alert("No se ha especificaco un usuario o contraseña.");
+              break;
+            case "2":
+              alert("No se pudo establecer la conexión con la base de datos.");
+              break;
+            case "3":
+              alert("No se pudo insertar éste nuevo usuario.");
+              break;
+
+            default:
+              break;
+          }
+        } else {
+          if (res.data.message) {
+            console.log(res.data.user);
+          }
+        }
+      });
   }
 
   handleInput(e) {
