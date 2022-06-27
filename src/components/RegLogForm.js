@@ -22,13 +22,10 @@ class RegLogForm extends React.Component {
     e.preventDefault();
 
     axios
-      .get(
-        `${config.secure}://${config.dominion}:${config.port}/api/reg_or_log.php`,
-        {
-          username: this.state.username,
-          password: this.state.password,
-        }
-      )
+      .get(`${config.secure}://${config.dominion}:${config.port}/api/login`, {
+        username: this.state.username,
+        password: this.state.password,
+      })
       .then((res) => {});
   }
 
