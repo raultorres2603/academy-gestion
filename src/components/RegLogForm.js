@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import axios from "axios";
 import config from "../configs/config.json";
+import Cookies from "universal-cookie";
 
 class RegLogForm extends React.Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class RegLogForm extends React.Component {
           }
         } else {
           if (res.data.message) {
-            console.log(res.data.user);
+            new Cookies().set("userID", res.data.user, { maxAge: 3600 });
           }
         }
       });

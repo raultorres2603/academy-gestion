@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import RegLogForm from "./components/RegLogForm";
@@ -11,12 +12,32 @@ class App extends React.Component {
     super(props);
     this.state = {
       userLogged: false,
+      comprob: false,
+      root: false,
     };
+  }
+
+  componentDidMount() {
+    this.root = ReactDOM.createRoot(document.getElementById("App"));
+    let cookie = new Cookies();
+    this.setState({
+      comprob: setInterval(() => {
+        if (!cookie.get("userID")) {
+          this.setState({
+            userLogged: false,
+          });
+        } else {
+          this.setState({
+            userLogged: true,
+          });
+        }
+      }, 500),
+    });
   }
 
   render() {
     return (
-      <div className="App text-center">
+      <div id="App" className="App text-center">
         {this.state.userLogged ? <MainMenu /> : <RegLogForm />}
       </div>
     );
