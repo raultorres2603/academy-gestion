@@ -40,6 +40,9 @@ class RegLogForm extends React.Component {
             case "3":
               alert("No se pudo insertar éste nuevo usuario.");
               break;
+            case "4":
+              alert("No se pudo comprobar éste usuario.");
+              break;
 
             default:
               break;
