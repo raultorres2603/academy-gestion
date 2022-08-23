@@ -80,7 +80,7 @@ class RegLogForm extends React.Component {
           <div className="container">
             <div className="col-md-12">
               <div className="row titleForm">
-                <p className="display-1 text-center text-white">Academy Gest</p>
+                <p className="display-1 text-center text-white">Academy Gestion</p>
               </div>
               <div className="row">
                 <form action="#" method="post" onSubmit={this.handleSubmit}>
