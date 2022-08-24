@@ -58,13 +58,30 @@ class RegLogForm extends React.Component {
   handleInput(e) {
     switch (e.target.name) {
       case "username":
+        // Poner invalid div si no tiene más de 5 carácteres
+        if (this.state.username.length < 5) {
+          document.getElementById("username").classList.add("is-invalid");
+          document.getElementById("username").classList.remove("is-valid");
+        } else {
+          document.getElementById("username").classList.add("is-valid");
+          document.getElementById("username").classList.remove("is-invalid");
+        }
+
         this.setState({
-          username: e.target.value,
+          username: e.target.value.toUpperCase(),
         });
         break;
       case "password":
+        // Poner invalid div si no tiene más de 5 carácteres
+        if (this.state.password.length < 5) {
+          document.getElementById("password").classList.add("is-invalid");
+          document.getElementById("password").classList.remove("is-valid");
+        } else {
+          document.getElementById("password").classList.add("is-valid");
+          document.getElementById("password").classList.remove("is-invalid");
+        }
         this.setState({
-          password: e.target.value,
+          password: e.target.value.toUpperCase(),
         });
         break;
 
@@ -80,7 +97,9 @@ class RegLogForm extends React.Component {
           <div className="container">
             <div className="col-md-12">
               <div className="row titleForm">
-                <p className="display-1 text-center text-white">Academy Gestion</p>
+                <p className="display-1 text-center text-white">
+                  Academy Gestion
+                </p>
               </div>
               <div className="row">
                 <form action="#" method="post" onSubmit={this.handleSubmit}>
@@ -89,11 +108,19 @@ class RegLogForm extends React.Component {
                       <input
                         className="form-control form-control-lg inputForm bg-dark text-white"
                         type="text"
+                        id="username"
                         onInput={this.handleInput}
                         placeholder="Username"
                         name="username"
                         aria-label=".form-control-lg example"
                       />
+                      <div
+                        id="validationServerUsernameFeedback"
+                        class="invalid-feedback"
+                      >
+                        Username must be more than 5 characters.
+                      </div>
+                      <div class="valid-feedback">It can be used!</div>
                     </div>
                     <div className="col-md-6">
                       <input
@@ -101,9 +128,17 @@ class RegLogForm extends React.Component {
                         type="password"
                         onInput={this.handleInput}
                         placeholder="Password"
+                        id="password"
                         name="password"
                         aria-label=".form-control-lg example"
                       />
+                      <div
+                        id="validationServerUsernameFeedback"
+                        class="invalid-feedback"
+                      >
+                        Password must be more than 5 characters.
+                      </div>
+                      <div class="valid-feedback">It can be used!</div>
                     </div>
                   </div>
                   <div className="row buttonLogin">
