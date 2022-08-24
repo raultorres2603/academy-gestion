@@ -32,7 +32,9 @@ class RegLogForm extends React.Component {
         if (res.data.error) {
           switch (res.data.error) {
             case "1":
-              alert("No se ha especificaco un usuario o contraseña.");
+              alert(
+                "No se ha especificaco un usuario o contraseña o no se han enviado parametros correctos."
+              );
               break;
             case "2":
               alert("No se pudo establecer la conexión con la base de datos.");
