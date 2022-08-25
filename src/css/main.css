@@ -3,6 +3,14 @@
   src: url("./Tiza.ttf");
 }
 
+.valid-feedback {
+  color: chartreuse;
+}
+
+.invalid-feedback {
+  color: red;
+}
+
 .App {
   margin-top: 12%;
 }
