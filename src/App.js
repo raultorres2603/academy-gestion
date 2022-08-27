@@ -37,7 +37,6 @@ class App extends React.Component {
 
   componentWillUnmount() {
     clearInterval(this.state.comprob);
-    this.root = false;
   }
 
   render() {

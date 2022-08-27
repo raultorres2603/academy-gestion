@@ -7,6 +7,16 @@
   color: chartreuse;
 }
 
+.navbarAG {
+  margin-left: 11vw;
+  margin-right: 9.5vw;
+  margin-top: -2vw;
+}
+
+.navbarAGbrand {
+  font-size: 1vw;
+}
+
 .invalid-feedback {
   color: red;
 }

@@ -118,11 +118,11 @@ class RegLogForm extends React.Component {
                       />
                       <div
                         id="validationServerUsernameFeedback"
-                        class="invalid-feedback"
+                        className="invalid-feedback"
                       >
                         Username must be more than 5 characters.
                       </div>
-                      <div class="valid-feedback">It can be used!</div>
+                      <div className="valid-feedback">It can be used!</div>
                     </div>
                     <div className="col-md-6">
                       <input
@@ -136,11 +136,11 @@ class RegLogForm extends React.Component {
                       />
                       <div
                         id="validationServerUsernameFeedback"
-                        class="invalid-feedback"
+                        className="invalid-feedback"
                       >
                         Password must be more than 5 characters.
                       </div>
-                      <div class="valid-feedback">It can be used!</div>
+                      <div className="valid-feedback">It can be used!</div>
                     </div>
                   </div>
                   <div className="row buttonLogin">
