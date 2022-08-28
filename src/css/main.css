@@ -7,14 +7,12 @@
   color: chartreuse;
 }
 
-.navbarAG {
-  margin-left: 11vw;
-  margin-right: 9.5vw;
-  margin-top: -2vw;
+.buttonsGroup {
+  margin-left: -3vw;
 }
 
-.navbarAGbrand {
-  font-size: 1vw;
+.buttonMain {
+  font-size: 1.5vw;
 }
 
 .invalid-feedback {

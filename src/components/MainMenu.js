@@ -5,19 +5,30 @@ import {
   BsCollectionFill,
   BsFolderFill,
 } from "react-icons/bs";
+import Profile from "./Profile";
 class MainMenu extends React.Component {
   constructor(props) {
     super(props);
     this.handleMenu = this.handleMenu.bind(this);
   }
 
-  componentDidMount() {
-    this.mainmenu = ReactDOM.createRoot(
-      document.getElementById("mainMenuContent")
-    );
-  }
+  handleMenu(e) {
+    switch (e.target.value) {
+      case "profile":
+        this.mainmenu = ReactDOM.createRoot(
+          document.getElementById("mainMenuContent")
+        );
+        this.mainmenu.render(<Profile />);
+        break;
+      case "rooms":
+        break;
+      case "qualification":
+        break;
 
-  handleMenu(e) {}
+      default:
+        break;
+    }
+  }
 
   render() {
     return (
@@ -25,35 +36,35 @@ class MainMenu extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-12" id="mainMenuContent">
-              <div className="row">
+              <div className="row buttonsGroup">
                 <div className="col-4">
                   <button
                     type="button"
-                    className="btn btn-outline-light btn-lg rounded-circle border-0"
-                    value="perfil"
+                    className="btn btn-outline-light btn-lg rounded-circle border-0 buttonMain"
+                    value="profile"
                     onClick={this.handleMenu}
                   >
-                    <BsFillPersonFill size={"10vw"} />
+                    Profile
                   </button>
                 </div>
                 <div className="col-4">
                   <button
                     type="button"
-                    className="btn btn-outline-light btn-lg rounded-circle border-0"
-                    value="aulas"
+                    value="rooms"
+                    className="btn btn-outline-light btn-lg rounded-circle border-0 buttonMain"
                     onClick={this.handleMenu}
                   >
-                    <BsCollectionFill size={"10vw"} />
+                    Rooms
                   </button>
                 </div>
                 <div className="col-4">
                   <button
                     type="button"
-                    className="btn btn-outline-light btn-lg rounded-circle border-0"
-                    value="notas"
+                    value="qualification"
+                    className="btn btn-outline-light btn-lg rounded-circle border-0 buttonMain"
                     onClick={this.handleMenu}
                   >
-                    <BsFolderFill size={"10vw"} />
+                    Qualifications
                   </button>
                 </div>
               </div>
