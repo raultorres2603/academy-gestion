@@ -1,11 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  BsFillPersonFill,
-  BsCollectionFill,
-  BsFolderFill,
-} from "react-icons/bs";
 import Profile from "./Profile";
+import "bootstrap-icons/font/bootstrap-icons.css";
 class MainMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -40,31 +36,31 @@ class MainMenu extends React.Component {
                 <div className="col-4">
                   <button
                     type="button"
-                    className="btn btn-outline-light btn-lg rounded-circle border-0 buttonMain"
+                    className="btn btn-outline-light btn-lg rounded-5 border-0 buttonMain"
                     value="profile"
                     onClick={this.handleMenu}
                   >
-                    Profile
+                    <i class="bi bi-person-fill"></i>
                   </button>
                 </div>
                 <div className="col-4">
                   <button
                     type="button"
                     value="rooms"
-                    className="btn btn-outline-light btn-lg rounded-circle border-0 buttonMain"
+                    className="btn btn-outline-light btn-lg rounded-5 border-0 buttonMain"
                     onClick={this.handleMenu}
                   >
-                    Rooms
+                    <i class="bi bi-easel-fill"></i>
                   </button>
                 </div>
                 <div className="col-4">
                   <button
                     type="button"
                     value="qualification"
-                    className="btn btn-outline-light btn-lg rounded-circle border-0 buttonMain"
+                    className="btn btn-outline-light btn-lg rounded-5 border-0 buttonMain"
                     onClick={this.handleMenu}
                   >
-                    Qualifications
+                    <i class="bi bi-clipboard2-pulse-fill"></i>
                   </button>
                 </div>
               </div>
