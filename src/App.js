@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
@@ -7,45 +7,25 @@ import MainMenu from "./components/MainMenu";
 import Cookies from "universal-cookie";
 import "./css/main.css";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userLogged: false,
-      comprob: false,
-      root: false,
-    };
-  }
+function App(props) {
+  const [userLogged, setUserLogged] = useState(false);
 
-  componentDidMount() {
-    this.root = ReactDOM.createRoot(document.getElementById("App"));
+  useEffect(() => {
     let cookie = new Cookies();
-    this.setState({
-      comprob: setInterval(() => {
-        if (!cookie.get("userID")) {
-          this.setState({
-            userLogged: false,
-          });
-        } else {
-          this.setState({
-            userLogged: true,
-          });
-        }
-      }, 500),
-    });
-  }
+    setInterval(() => {
+      if (!cookie.get("userID")) {
+        setUserLogged(false);
+      } else {
+        setUserLogged(true);
+      }
+    }, 500);
+  });
 
-  componentWillUnmount() {
-    clearInterval(this.state.comprob);
-  }
-
-  render() {
-    return (
-      <div id="App" className="App text-center">
-        {this.state.userLogged ? <MainMenu /> : <RegLogForm />}
-      </div>
-    );
-  }
+  return (
+    <div id="App" className="App text-center">
+      {userLogged ? <MainMenu /> : <RegLogForm />}
+    </div>
+  );
 }
 
 export default App;

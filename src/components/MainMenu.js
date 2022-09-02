@@ -1,68 +1,73 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import {
-  BsFillPersonFill,
-  BsCollectionFill,
-  BsFolderFill,
-} from "react-icons/bs";
-class MainMenu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleMenu = this.handleMenu.bind(this);
+import Profile from "./Profile";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import Cookies from "universal-cookie";
+function MainMenu(props) {
+  function handleMenu(e) {
+    let cookie = new Cookies();
+    switch (e.target.value) {
+      case "profile":
+        let mainmenu = ReactDOM.createRoot(
+          document.getElementById("mainMenuContent")
+        );
+        mainmenu.render(<Profile userId={window.atob(cookie.get("userID"))} />);
+        break;
+      case "rooms":
+        break;
+      case "qualification":
+        break;
+
+      default:
+        break;
+    }
   }
 
-  componentDidMount() {
-    this.mainmenu = ReactDOM.createRoot(
-      document.getElementById("mainMenuContent")
-    );
-  }
-
-  handleMenu(e) {}
-
-  render() {
-    return (
-      <div className="mainMenu">
-        <div className="container">
-          <div className="row">
-            <div className="col-12" id="mainMenuContent">
-              <div className="row">
-                <div className="col-4">
-                  <button
-                    type="button"
-                    className="btn btn-outline-light btn-lg rounded-circle border-0"
-                    value="perfil"
-                    onClick={this.handleMenu}
-                  >
-                    <BsFillPersonFill size={"10vw"} />
-                  </button>
-                </div>
-                <div className="col-4">
-                  <button
-                    type="button"
-                    className="btn btn-outline-light btn-lg rounded-circle border-0"
-                    value="aulas"
-                    onClick={this.handleMenu}
-                  >
-                    <BsCollectionFill size={"10vw"} />
-                  </button>
-                </div>
-                <div className="col-4">
-                  <button
-                    type="button"
-                    className="btn btn-outline-light btn-lg rounded-circle border-0"
-                    value="notas"
-                    onClick={this.handleMenu}
-                  >
-                    <BsFolderFill size={"10vw"} />
-                  </button>
-                </div>
+  return (
+    <div className="mainMenu">
+      <div className="container">
+        <div className="row">
+          <div className="col-12" id="mainMenuContent">
+            <div className="row buttonsGroup">
+              <div className="col-4">
+                <button
+                  type="button"
+                  className="btn btn-outline-light btn-lg rounded-5 border-0 buttonMain"
+                  value="profile"
+                  onClick={handleMenu}
+                >
+                  <i className="bi bi-person-fill" value="profile"></i>
+                </button>
+              </div>
+              <div className="col-4">
+                <button
+                  type="button"
+                  value="rooms"
+                  className="btn btn-outline-light btn-lg rounded-5 border-0 buttonMain"
+                  onClick={handleMenu}
+                >
+                  <i className="bi bi-easel-fill" value="rooms"></i>
+                </button>
+              </div>
+              <div className="col-4">
+                <button
+                  type="button"
+                  value="qualification"
+                  className="btn btn-outline-light btn-lg rounded-5 border-0 buttonMain"
+                  onClick={handleMenu}
+                >
+                  <i
+                    className="bi bi-clipboard2-pulse-fill"
+                    value="qualification"
+                  ></i>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default MainMenu;
