@@ -9,9 +9,8 @@ import "./css/main.css";
 
 function App(props) {
   const [userLogged, setUserLogged] = useState(false);
-
+  const cookie = new Cookies();
   useEffect(() => {
-    let cookie = new Cookies();
     setInterval(() => {
       if (!cookie.get("userID")) {
         setUserLogged(false);
@@ -23,7 +22,11 @@ function App(props) {
 
   return (
     <div id="App" className="App text-center">
-      {userLogged ? <MainMenu /> : <RegLogForm />}
+      {userLogged ? (
+        <MainMenu userId={window.atob(cookie.get("userID"))} />
+      ) : (
+        <RegLogForm />
+      )}
     </div>
   );
 }
