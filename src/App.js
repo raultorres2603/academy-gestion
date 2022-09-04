@@ -8,8 +8,11 @@ import Cookies from "universal-cookie";
 import "./css/main.css";
 
 function App(props) {
-  const [userLogged, setUserLogged] = useState(false);
   const cookie = new Cookies();
+  const [userLogged, setUserLogged] = useState(
+    !cookie.get("userID") ? false : true
+  );
+
   useEffect(() => {
     setInterval(() => {
       if (!cookie.get("userID")) {

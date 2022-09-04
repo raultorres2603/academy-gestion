@@ -1,17 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Profile from "./Profile";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Cookies from "universal-cookie";
 function MainMenu(props) {
+  const [user, setUser] = useState(infoUser);
+  const cookie = new Cookies();
+
+  function infoUser() {
+    let idUser = cookie.get("userID");
+  }
+
   function handleMenu(e) {
-    let cookie = new Cookies();
     switch (e.target.value) {
       case "profile":
         let mainmenu = ReactDOM.createRoot(
           document.getElementById("mainMenuContent")
         );
-        mainmenu.render(<Profile userId={window.atob(cookie.get("userID"))} />);
+        mainmenu.render(<Profile userId={cookie.get("userID")} />);
         break;
       case "rooms":
         break;
