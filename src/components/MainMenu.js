@@ -8,7 +8,7 @@ function MainMenu(props) {
   const cookie = new Cookies();
 
   function infoUser() {
-    let idUser = cookie.get("userID");
+    let idUser = cookie.get("Auth");
   }
 
   function handleMenu(e) {
@@ -17,7 +17,7 @@ function MainMenu(props) {
         let mainmenu = ReactDOM.createRoot(
           document.getElementById("mainMenuContent")
         );
-        mainmenu.render(<Profile userId={cookie.get("userID")} />);
+        mainmenu.render(<Profile auth={cookie.get("Auth")} />);
         break;
       case "rooms":
         break;
