@@ -1,5 +1,6 @@
 {
     "port": 3006,
     "dominion": "localhost",
-    "secure": "http"
+    "secure": "http",
+    "profleStep": "Aquí puedes poner tu información personal"
 }
