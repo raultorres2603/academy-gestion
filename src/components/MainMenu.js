@@ -75,6 +75,7 @@ function MainMenu(props) {
                   type="button"
                   className="btn btn-outline-light btn-lg rounded-5 border-0 buttonMain profile"
                   value="profile"
+                  title={config.profileHelp}
                   onClick={handleMenu}
                 >
                   <i className="bi bi-person-fill" value="profile"></i>
@@ -89,6 +90,7 @@ function MainMenu(props) {
                       ? "btn btn-outline-light btn-lg rounded-5 border-0 buttonMain rooms disabled"
                       : "btn btn-outline-light btn-lg rounded-5 border-0 buttonMain rooms"
                   }
+                  title={config.roomsHelp}
                   onClick={handleMenu}
                 >
                   <i className="bi bi-easel-fill" value="rooms"></i>
@@ -103,6 +105,7 @@ function MainMenu(props) {
                       ? "btn btn-outline-light btn-lg rounded-5 border-0 buttonMain qualification disabled"
                       : "btn btn-outline-light btn-lg rounded-5 border-0 buttonMain qualification"
                   }
+                  title={config.qualiHelp}
                   onClick={handleMenu}
                 >
                   <i
