@@ -5,11 +5,10 @@ import axios from "axios";
 import config from "../configs/config.json";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Cookies from "universal-cookie";
-import { useContext } from "react";
 
 function MainMenu(props) {
   const cookie = new Cookies();
-  const user = comprobInfo();
+  const [user, setUser] = useState(comprobInfo());
   const comprob = setInterval(() => {
     if (!cookie.get("Auth")) {
       window.location.reload();
@@ -22,7 +21,7 @@ function MainMenu(props) {
         let mainmenu = ReactDOM.createRoot(
           document.getElementById("mainMenuContent")
         );
-        mainmenu.render(<Profile auth={props.auth} />);
+        mainmenu.render(<Profile user={user} />);
         break;
       case "rooms":
         break;
