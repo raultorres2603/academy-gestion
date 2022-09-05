@@ -5,6 +5,8 @@ import RegLogForm from "./components/RegLogForm";
 import MainMenu from "./components/MainMenu";
 import Cookies from "universal-cookie";
 import "./css/main.css";
+import axios from "axios";
+import config from "./configs/config.json";
 
 function App(props) {
   const cookie = new Cookies();

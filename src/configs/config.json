@@ -2,5 +2,14 @@
     "port": 3006,
     "dominion": "localhost",
     "secure": "http",
-    "profleStep": "Aquí puedes poner tu información personal"
+    "firstName": "Nombre",
+    "secondName": "Apellidos",
+    "nif": "DNI",
+    "tel" : "Teléfono",
+    "country" : "País",
+    "city" : "Ciudad",
+    "configProfile": "Configura tu perfil",
+    "mainMenuTitle": "Pantalla principal",
+    "titleMain": "Bienvenido ",
+    "confirmProfile": "Guardar"
 }
