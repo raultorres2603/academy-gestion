@@ -17,12 +17,13 @@ function Profile(props) {
       .post(
         `${config.secure}://${config.dominion}:${config.port}/api/updateUser`,
         {
-          firstName: user.firstName,
-          secondName: user.secondName,
-          nif: user.nif,
-          country: user.country,
-          city: user.city,
-          idUser: cookie.get("Auth"),
+          firstName: user.firstName.toUpperCase(),
+          secondName: user.secondName.toUpperCase(),
+          nif: user.nif.toUpperCase(),
+          country: user.country.toUpperCase(),
+          tel: user.tel.toUpperCase(),
+          city: user.city.toUpperCase(),
+          idUser: window.atob(cookie.get("Auth")),
         }
       )
       .then((res) => {
@@ -153,6 +154,17 @@ function Profile(props) {
                 <div className="row mt-4">
                   <button type="submit" className="btn btn-success btn-lg">
                     {config.confirmProfile}
+                  </button>
+                </div>
+                <div className="row mt-4">
+                  <button
+                    type="button"
+                    className="btn btn-danger btn-lg"
+                    onClick={() => {
+                      window.location.reload();
+                    }}
+                  >
+                    {config.rejectProfile}
                   </button>
                 </div>
               </form>

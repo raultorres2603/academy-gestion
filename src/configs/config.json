@@ -11,5 +11,6 @@
     "configProfile": "Configura tu perfil",
     "mainMenuTitle": "Pantalla principal",
     "titleMain": "Bienvenido ",
-    "confirmProfile": "Guardar"
+    "confirmProfile": "Guardar",
+    "rejectProfile": "Volver"
 }
