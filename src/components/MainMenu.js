@@ -1,15 +1,37 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Profile from "./Profile";
+import axios from "axios";
+import config from "../configs/config.json";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Cookies from "universal-cookie";
-function MainMenu(props) {
-  const [user, setUser] = useState(infoUser);
-  const cookie = new Cookies();
+import { useEffect } from "react";
 
-  function infoUser() {
-    let idUser = cookie.get("Auth");
-  }
+function MainMenu(props) {
+  const cookie = new Cookies();
+  const comprob = setInterval(() => {
+    if (!cookie.get("Auth")) {
+      window.location.reload();
+    }
+  }, 500);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    axios
+      .post(
+        `${config.secure}://${config.dominion}:${config.port}/api/userInfo`,
+        {
+          idUser: window.atob(props.auth),
+        }
+      )
+      .then((res) => {
+        if (res.data.error) {
+          console.log(res.error);
+        } else {
+          setUser(res.data);
+        }
+      });
+  }, []);
 
   function handleMenu(e) {
     switch (e.target.value) {
@@ -17,7 +39,7 @@ function MainMenu(props) {
         let mainmenu = ReactDOM.createRoot(
           document.getElementById("mainMenuContent")
         );
-        mainmenu.render(<Profile auth={cookie.get("Auth")} />);
+        mainmenu.render(<Profile user={user} />);
         break;
       case "rooms":
         break;
@@ -34,11 +56,24 @@ function MainMenu(props) {
       <div className="container">
         <div className="row">
           <div className="col-12" id="mainMenuContent">
+            <div className="row text-center">
+              <div className="row titleForm">
+                {!user.firstName ? (
+                  <p className="display-3 text-center text-white">
+                    Pantalla Principal
+                  </p>
+                ) : (
+                  <p className="display-3 text-center text-white">
+                    {user.firstName} {user.secondName}
+                  </p>
+                )}
+              </div>
+            </div>
             <div className="row buttonsGroup">
               <div className="col-4">
                 <button
                   type="button"
-                  className="btn btn-outline-light btn-lg rounded-5 border-0 buttonMain"
+                  className="btn btn-outline-light btn-lg rounded-5 border-0 buttonMain profile"
                   value="profile"
                   onClick={handleMenu}
                 >
@@ -49,7 +84,11 @@ function MainMenu(props) {
                 <button
                   type="button"
                   value="rooms"
-                  className="btn btn-outline-light btn-lg rounded-5 border-0 buttonMain"
+                  className={
+                    !user.firstName
+                      ? "btn btn-outline-light btn-lg rounded-5 border-0 buttonMain rooms disabled"
+                      : "btn btn-outline-light btn-lg rounded-5 border-0 buttonMain rooms"
+                  }
                   onClick={handleMenu}
                 >
                   <i className="bi bi-easel-fill" value="rooms"></i>
@@ -59,7 +98,11 @@ function MainMenu(props) {
                 <button
                   type="button"
                   value="qualification"
-                  className="btn btn-outline-light btn-lg rounded-5 border-0 buttonMain"
+                  className={
+                    !user.firstName
+                      ? "btn btn-outline-light btn-lg rounded-5 border-0 buttonMain qualification disabled"
+                      : "btn btn-outline-light btn-lg rounded-5 border-0 buttonMain qualification"
+                  }
                   onClick={handleMenu}
                 >
                   <i

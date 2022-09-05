@@ -47,6 +47,7 @@ function RegLogForm(props) {
             new Cookies().set("Auth", window.btoa(res.data.user), {
               maxAge: 3600,
             });
+            window.location.reload();
           }
         }
       });

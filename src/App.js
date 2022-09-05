@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import RegLogForm from "./components/RegLogForm";
 import MainMenu from "./components/MainMenu";
 import Cookies from "universal-cookie";
 import "./css/main.css";
+import axios from "axios";
+import config from "./configs/config.json";
 
 function App(props) {
   const cookie = new Cookies();
@@ -13,23 +14,9 @@ function App(props) {
     !cookie.get("Auth") ? false : true
   );
 
-  useEffect(() => {
-    setInterval(() => {
-      if (!cookie.get("Auth")) {
-        setUserLogged(false);
-      } else {
-        setUserLogged(true);
-      }
-    }, 500);
-  });
-
   return (
     <div id="App" className="App text-center">
-      {userLogged ? (
-        <MainMenu auth={window.atob(cookie.get("Auth"))} />
-      ) : (
-        <RegLogForm />
-      )}
+      {userLogged ? <MainMenu auth={cookie.get("Auth")} /> : <RegLogForm />}
     </div>
   );
 }
