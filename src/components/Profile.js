@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
+import $ from "jquery";
 import axios from "axios";
 import config from "../configs/config.json";
 import Cookies from "universal-cookie";
@@ -7,6 +8,7 @@ import Cookies from "universal-cookie";
 function Profile(props) {
   const [user, setUser] = useState(props.user);
   const cookie = new Cookies();
+  console.log(user);
 
   document.title = "A&G - Profile";
 
@@ -21,18 +23,23 @@ function Profile(props) {
           secondName: user.secondName.toUpperCase(),
           nif: user.nif.toUpperCase(),
           country: user.country.toUpperCase(),
-          tel: user.tel.toUpperCase(),
+          tel: user.tel,
           city: user.city.toUpperCase(),
           idUser: window.atob(cookie.get("Auth")),
         }
       )
       .then((res) => {
+        console.log(res);
         if (res.error) {
-          alert("No se ha podido actualizar el usuario");
-          window.location.reload();
+          $(".alert-danger").fadeToggle(500);
+          setTimeout(() => {
+            $(".alert-danger").fadeToggle(500);
+          }, 2000);
         } else {
-          alert("Actualización con éxito");
-          window.location.reload();
+          $(".alert-success").fadeToggle(500);
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
         }
       })
       .catch((err) => {
@@ -82,6 +89,22 @@ function Profile(props) {
               <p className="display-3 text-center text-white">
                 {config.configProfile}
               </p>
+            </div>
+            <div className="row">
+              <div
+                className="alert alert-success"
+                role="alert"
+                style={{ display: "none" }}
+              >
+                {config.successProfile}
+              </div>
+              <div
+                className="alert alert-danger"
+                role="alert"
+                style={{ display: "none" }}
+              >
+                {config.dangerProfile}
+              </div>
             </div>
             <div className="row mt-5">
               <form action="#" method="post" onSubmit={handleSubmit}>

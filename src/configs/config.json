@@ -15,5 +15,7 @@
     "rejectProfile": "Volver",
     "profileHelp": "Aquí puedes editar tu perfil",
     "roomsHelp": "Aquí puedes unirte a tus aulas",
-    "qualiHelp": "Aquí puedes ver tus notas"
+    "qualiHelp": "Aquí puedes ver tus notas",
+    "successProfile": "Actualización de perfil con éxito",
+    "dangerProfile": "Ha habido un error. Compruebe los datos."
 }
