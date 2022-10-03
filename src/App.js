@@ -21,7 +21,7 @@ function App(props) {
       {userLogged ? (
         <MainMenu auth={cookie.get("Auth")} socket={socket} />
       ) : (
-        <RegLogForm socket={socket} />
+        <RegLogForm />
       )}
     </div>
   );

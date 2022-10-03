@@ -35,10 +35,6 @@ function MainMenu(props) {
       });
   }, []);
 
-  socket.on("roomJoined", (rooms) => {
-    console.log(rooms);
-  });
-
   function handleMenu(e) {
     switch (e.target.value) {
       case "profile":
