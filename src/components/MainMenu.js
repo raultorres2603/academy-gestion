@@ -8,6 +8,7 @@ import Cookies from "universal-cookie";
 import { useEffect } from "react";
 
 function MainMenu(props) {
+  const socket = props.socket;
   const cookie = new Cookies();
   const comprob = setInterval(() => {
     if (!cookie.get("Auth")) {
@@ -29,9 +30,14 @@ function MainMenu(props) {
           console.log(res.error);
         } else {
           setUser(res.data);
+          socket.emit("joinRoom", [{ room: "mainMenu" }]);
         }
       });
   }, []);
+
+  socket.on("roomJoined", (rooms) => {
+    console.log(rooms);
+  });
 
   function handleMenu(e) {
     switch (e.target.value) {
@@ -39,7 +45,7 @@ function MainMenu(props) {
         let mainmenu = ReactDOM.createRoot(
           document.getElementById("mainMenuContent")
         );
-        mainmenu.render(<Profile user={user} />);
+        mainmenu.render(<Profile user={user} socket={socket} />);
         break;
       case "rooms":
         break;

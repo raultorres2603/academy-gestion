@@ -7,6 +7,8 @@ import Cookies from "universal-cookie";
 import "./css/main.css";
 import axios from "axios";
 import config from "./configs/config.json";
+const { io } = require("socket.io-client");
+const socket = io(`${config.secure}://${config.dominion}:${config.port}`);
 
 function App(props) {
   const cookie = new Cookies();
@@ -16,7 +18,11 @@ function App(props) {
 
   return (
     <div id="App" className="App text-center">
-      {userLogged ? <MainMenu auth={cookie.get("Auth")} /> : <RegLogForm />}
+      {userLogged ? (
+        <MainMenu auth={cookie.get("Auth")} socket={socket} />
+      ) : (
+        <RegLogForm socket={socket} />
+      )}
     </div>
   );
 }
