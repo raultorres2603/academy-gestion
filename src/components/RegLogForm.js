@@ -105,6 +105,7 @@ function RegLogForm(props) {
                       placeholder="Username"
                       name="username"
                       aria-label=".form-control-lg example"
+                      autocomplete="off"
                     />
                     <div
                       id="validationServerUsernameFeedback"
@@ -120,6 +121,7 @@ function RegLogForm(props) {
                       type="password"
                       onInput={handleInput}
                       placeholder="Password"
+                      autocomplete="off"
                       id="password"
                       name="password"
                       aria-label=".form-control-lg example"

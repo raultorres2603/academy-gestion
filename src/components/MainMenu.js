@@ -1,20 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import Profile from "./Profile";
 import axios from "axios";
+import Aulas from "./Aulas";
+import SetAulas from "./SetAulas";
 import config from "../configs/config.json";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Cookies from "universal-cookie";
-import { useEffect } from "react";
 
 function MainMenu(props) {
   const socket = props.socket;
   const cookie = new Cookies();
-  const comprob = setInterval(() => {
-    if (!cookie.get("Auth")) {
-      window.location.reload();
-    }
-  }, 500);
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -30,20 +26,28 @@ function MainMenu(props) {
           console.log(res.error);
         } else {
           setUser(res.data);
-          socket.emit("joinRoom", [{ room: "mainMenu" }]);
         }
       });
+
+    setInterval(() => {
+      if (!cookie.get("Auth")) {
+        window.location.reload();
+      }
+    }, 500);
   }, []);
 
   function handleMenu(e) {
+    let mainmenu = ReactDOM.createRoot(
+      document.getElementById("mainMenuContent")
+    );
     switch (e.target.value) {
       case "profile":
-        let mainmenu = ReactDOM.createRoot(
-          document.getElementById("mainMenuContent")
-        );
         mainmenu.render(<Profile user={user} socket={socket} />);
         break;
       case "rooms":
+        user.type === 1
+          ? mainmenu.render(<Aulas user={user} socket={socket} />)
+          : mainmenu.render(<SetAulas user={user} socket={socket} />);
         break;
       case "qualification":
         break;
