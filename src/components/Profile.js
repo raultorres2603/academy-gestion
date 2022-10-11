@@ -15,8 +15,7 @@ function Profile(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    let controller = new Controller();
-    controller.updateUser(
+    Controller.updateUser(
       user.firstName,
       user.secondName,
       user.nif,

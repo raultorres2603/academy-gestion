@@ -15,8 +15,7 @@ function RegLogForm(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    let controller = new Controller();
-    controller.createUser(username, password);
+    Controller.createUser(username, password);
   }
 
   function handleInput(e) {

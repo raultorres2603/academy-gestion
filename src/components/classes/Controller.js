@@ -2,7 +2,7 @@ import Aula from "./Aula";
 import User from "./User";
 
 class Controller {
-  createAula(name, plant, door) {
+  static createAula(name, plant, door) {
     let aula = new Aula(name, plant, door);
     let response = aula.create();
 
@@ -13,12 +13,12 @@ class Controller {
     }
   }
 
-  createUser(username, password) {
+  static createUser(username, password) {
     let user = new User(username, password);
     user.create();
   }
 
-  updateUser(firstName, secondName, nif, country, tel, city, idUser) {
+  static updateUser(firstName, secondName, nif, country, tel, city, idUser) {
     User.update(firstName, secondName, nif, country, tel, city, idUser);
   }
 }
