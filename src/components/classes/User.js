@@ -1,6 +1,7 @@
 import axios from "axios";
 import config from "../../configs/config.json";
 import Cookies from "universal-cookie";
+import $ from "jquery";
 
 class User {
   #username;
@@ -55,6 +56,40 @@ class User {
             window.location.reload();
           }
         }
+      });
+  }
+
+  static update(firstName, secondName, nif, country, tel, city, idUser) {
+    axios
+      .post(
+        `${config.secure}://${config.dominion}:${config.port}/api/updateUser`,
+        {
+          firstName: firstName.toUpperCase(),
+          secondName: secondName.toUpperCase(),
+          nif: nif.toUpperCase(),
+          country: country.toUpperCase(),
+          tel: tel,
+          city: city.toUpperCase(),
+          idUser: window.atob(idUser),
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.error) {
+          $(".alert-danger").fadeToggle(500);
+          setTimeout(() => {
+            $(".alert-danger").fadeToggle(500);
+          }, 2000);
+        } else {
+          $(".alert-success").fadeToggle(500);
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        }
+      })
+      .catch((err) => {
+        alert("Error de conexión");
+        console.log(err);
       });
   }
 }

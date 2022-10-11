@@ -17,6 +17,10 @@ class Controller {
     let user = new User(username, password);
     user.create();
   }
+
+  updateUser(firstName, secondName, nif, country, tel, city, idUser) {
+    User.update(firstName, secondName, nif, country, tel, city, idUser);
+  }
 }
 
 export default Controller;

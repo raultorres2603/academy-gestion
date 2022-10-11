@@ -4,6 +4,7 @@ import $ from "jquery";
 import axios from "axios";
 import config from "../configs/config.json";
 import Cookies from "universal-cookie";
+import Controller from "./classes/Controller";
 
 function Profile(props) {
   const [user, setUser] = useState(props.user);
@@ -14,38 +15,16 @@ function Profile(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    axios
-      .post(
-        `${config.secure}://${config.dominion}:${config.port}/api/updateUser`,
-        {
-          firstName: user.firstName.toUpperCase(),
-          secondName: user.secondName.toUpperCase(),
-          nif: user.nif.toUpperCase(),
-          country: user.country.toUpperCase(),
-          tel: user.tel,
-          city: user.city.toUpperCase(),
-          idUser: window.atob(cookie.get("Auth")),
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        if (res.error) {
-          $(".alert-danger").fadeToggle(500);
-          setTimeout(() => {
-            $(".alert-danger").fadeToggle(500);
-          }, 2000);
-        } else {
-          $(".alert-success").fadeToggle(500);
-          setTimeout(() => {
-            window.location.reload();
-          }, 2000);
-        }
-      })
-      .catch((err) => {
-        alert("Error de conexión");
-        console.log(err);
-      });
+    let controller = new Controller();
+    controller.updateUser(
+      user.firstName,
+      user.secondName,
+      user.nif,
+      user.country,
+      user.tel,
+      user.city,
+      cookie.get("Auth")
+    );
   }
 
   function handleChange(e) {

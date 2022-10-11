@@ -8,6 +8,8 @@ function SetAulas(props) {
   const socket = props.socket;
   const user = props.user;
 
+  document.title = "A&G - Aulas";
+
   return (
     <div className="setAulas">
       <div className="container">
