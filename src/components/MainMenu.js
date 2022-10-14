@@ -7,9 +7,13 @@ import SetAulas from "./SetAulas";
 import config from "../configs/config.json";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Cookies from "universal-cookie";
+import { userContext } from "../App";
+import { useContext } from "react";
 
 function MainMenu(props) {
-  const socket = props.socket;
+  const contexts = useContext(userContext);
+  const socket = contexts.socket;
+  const auth = contexts.auth;
   const cookie = new Cookies();
   const [user, setUser] = useState({});
 
@@ -18,7 +22,7 @@ function MainMenu(props) {
       .post(
         `${config.secure}://${config.dominion}:${config.port}/api/userInfo`,
         {
-          idUser: window.atob(props.auth),
+          idUser: window.atob(auth),
         }
       )
       .then((res) => {
