@@ -7,13 +7,10 @@ import SetAulas from "./SetAulas";
 import config from "../configs/config.json";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Cookies from "universal-cookie";
-import { userContext } from "../App";
-import { useContext } from "react";
 
 function MainMenu(props) {
-  const contexts = useContext(userContext);
-  const socket = contexts.socket;
-  const auth = contexts.auth;
+  const socket = props.socket;
+  const auth = props.auth;
   const cookie = new Cookies();
   const [user, setUser] = useState({});
 

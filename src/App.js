@@ -21,11 +21,7 @@ function App(props) {
   return (
     <div id="App" className="App text-center">
       {userLogged ? (
-        <userContext.Provider
-          value={{ auth: cookie.get("Auth"), socket: socket }}
-        >
-          <MainMenu />
-        </userContext.Provider>
+        <MainMenu auth={cookie.get("Auth")} socket={socket} />
       ) : (
         <RegLogForm />
       )}
