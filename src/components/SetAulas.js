@@ -8,7 +8,9 @@ function SetAulas(props) {
   const socket = props.socket;
   const user = props.user;
 
-  document.title = "A&G - Aulas";
+  useEffect(() => {
+    document.title = "A&G - Aulas";
+  }, []);
 
   return (
     <div className="setAulas">
