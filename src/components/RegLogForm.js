@@ -11,7 +11,7 @@ function RegLogForm(props) {
 
   useEffect(() => {
     document.title = "Login - A&G";
-  });
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
